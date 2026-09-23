@@ -11,7 +11,7 @@ module.exports = defineConfig({
   },
   webServer: {
     command: "node serve.js",
-    url: "http://localhost:4173",
+    url: "http://localhost:4173/atv1-encontrar-elementos/",
     cwd: __dirname,
     reuseExistingServer: !process.env.CI,
   },

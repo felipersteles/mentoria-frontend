@@ -53,6 +53,15 @@ test.describe("Projeto final — Login", () => {
   });
 
   test("botão Entrar não aceita clique duplo durante a requisição", async ({ page }) => {
+    await page.route("https://randomuser.me/api/**", async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 500));
+      await route.fulfill({
+        status: 200,
+        contentType: "application/json",
+        body: JSON.stringify(USUARIOS_FALSOS),
+      });
+    });
+
     await page.getByLabel("Usuário").fill("aluna-teste");
     await page.getByLabel("Senha").fill("senha123");
 
