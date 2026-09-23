@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projeto Final — Login</title>
+  <link rel="stylesheet" href="../shared/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Mentoria CEUMA</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#conteudo">Conteúdo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section id="aviso-fallback" class="aviso aviso-erro" hidden></section>
+
+    <section id="secao-login">
+      <h2>Entrar</h2>
+      <form id="form-login" novalidate>
+        <div class="campo">
+          <label for="usuario">Usuário</label>
+          <input type="text" id="usuario" name="usuario" autocomplete="username" />
+          <p id="erro-usuario" class="mensagem-erro"></p>
+        </div>
+
+        <div class="campo">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" autocomplete="current-password" />
+          <p id="erro-senha" class="mensagem-erro"></p>
+        </div>
+
+        <button id="botao-mostrar-senha" type="button" class="botao-secundario" aria-pressed="false">
+          Mostrar senha
+        </button>
+
+        <button id="botao-entrar" type="submit">Entrar</button>
+
+        <p id="status-login" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section id="secao-perfil" hidden>
+      <h2>Seu perfil</h2>
+      <div id="card-perfil"></div>
+    </section>
+  </main>
+
+  <p class="rodape-atividade">Projeto final — Mentoria JS CEUMA</p>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

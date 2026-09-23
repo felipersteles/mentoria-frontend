@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atividade 1 — Encontrar elementos</title>
+  <link rel="stylesheet" href="../shared/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Oficina de Serviços CEUMA</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="inicio">
+      <h2>Bem-vindo</h2>
+      <p>
+        Esta página é o ponto de partida da mentoria. Nesta atividade você vai
+        praticar como encontrar elementos no DOM usando JavaScript.
+      </p>
+      <p id="contagem-links"></p>
+      <p id="aviso-selecao" class="aviso aviso-erro" hidden></p>
+    </section>
+
+    <section id="servicos">
+      <h2>Serviços</h2>
+      <p>Consultoria, mentoria em código e revisão de projetos.</p>
+    </section>
+
+    <section id="contato">
+      <h2>Contato</h2>
+      <form>
+        <div class="campo">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="3"></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <p class="rodape-atividade">Atividade 1 de 5 — Mentoria JS CEUMA</p>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atividade 4 — Criar elementos</title>
+  <link rel="stylesheet" href="../shared/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Catálogo de serviços</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#servicos">Serviços</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="servicos">
+      <h2>Nossos serviços</h2>
+
+      <div class="campo">
+        <label for="filtro">Filtrar por nome</label>
+        <input type="text" id="filtro" name="filtro" placeholder="Ex.: mentoria" />
+      </div>
+
+      <ul id="lista-servicos" class="lista-servicos" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <p class="rodape-atividade">Atividade 4 de 5 — Mentoria JS CEUMA</p>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atividade 2 — Alterar conteúdo</title>
+  <link rel="stylesheet" href="../shared/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Cadastro de e-mail</h1>
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="#cadastro">Cadastro</a></li>
+        <li><a href="#acessibilidade">Acessibilidade</a></li>
+      </ul>
+    </nav>
+    <button id="botao-tema" type="button" aria-pressed="false" class="botao-secundario">
+      Alternar tema
+    </button>
+  </header>
+
+  <main>
+    <section id="cadastro">
+      <h2>Confirme seu e-mail</h2>
+      <form>
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" />
+          <p id="erro-email" class="mensagem-erro"></p>
+        </div>
+        <button type="submit">Confirmar</button>
+      </form>
+    </section>
+
+    <section id="acessibilidade">
+      <h2>Painel de acessibilidade (para conferência)</h2>
+      <p>
+        Este painel mostra, em texto, o que um leitor de tela anunciaria
+        para o campo de e-mail. Use-o para conferir seu trabalho.
+      </p>
+      <dl>
+        <dt>aria-invalid do campo:</dt>
+        <dd id="debug-invalid">—</dd>
+        <dt>Descrição associada (aria-describedby):</dt>
+        <dd id="debug-descricao">—</dd>
+      </dl>
+    </section>
+  </main>
+
+  <p class="rodape-atividade">Atividade 2 de 5 — Mentoria JS CEUMA</p>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
