@@ -1,7 +1,4 @@
-// Atividade 5 — Dados de fora
-//
-// Objetivo: praticar fetch + async/await consumindo uma API pública
-// (ViaCEP), tratando os estados de carregando, sucesso e erro.
+// Atividade 5 — Dados de fora (SOLUÇÃO)
 
 const campoCep = document.querySelector("#cep");
 const statusBusca = document.querySelector("#status-busca");
@@ -9,6 +6,7 @@ const campoRua = document.querySelector("#rua");
 const campoBairro = document.querySelector("#bairro");
 const campoCidade = document.querySelector("#cidade");
 const botaoTentarNovamente = document.querySelector("#botao-tentar-novamente");
+const form = document.querySelector("form");
 
 let ultimoCepBuscado = "";
 
@@ -24,37 +22,48 @@ function liberarPreenchimentoManual() {
   campoCidade.readOnly = false;
 }
 
-// TODO 1: crie a função assíncrona buscarEndereco(cep). Dentro dela:
-//   a) mostre "Buscando endereço..." em "statusBusca" (use a classe
-//      "is-loading" no formulário se quiser indicar visualmente).
-//   b) esconda o botão "Tentar novamente" (hidden = true) enquanto busca.
-//   c) faça fetch para `https://viacep.com.br/ws/${cep}/json/` usando
-//      await.
-//   d) verifique "response.ok". Se for falso, lance um Error (throw new
-//      Error("...")) com uma mensagem em português.
-//   e) converta a resposta com await response.json().
-//   f) o ViaCEP retorna { erro: true } quando o CEP não existe (mesmo com
-//      response.ok = true). Verifique isso e lance um Error também.
-//   g) se tudo der certo, preencha campoRua, campoBairro e campoCidade
-//      com os campos "logradouro", "bairro" e "localidade" da resposta,
-//      e mostre uma mensagem de sucesso em "statusBusca".
-//   h) use try/catch: no catch, mostre a mensagem de erro em
-//      "statusBusca", exiba o botão "Tentar novamente" e chame
-//      liberarPreenchimentoManual() para o aluno poder digitar na mão.
 async function buscarEndereco(cep) {
-  // seu código aqui
+  form.classList.add("is-loading");
+  statusBusca.textContent = "Buscando endereço...";
+  botaoTentarNovamente.hidden = true;
+  limparEndereco();
+
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+
+    if (!response.ok) {
+      throw new Error("Não foi possível consultar o CEP agora. Tente novamente.");
+    }
+
+    const dados = await response.json();
+
+    if (dados.erro) {
+      throw new Error("CEP não encontrado.");
+    }
+
+    campoRua.value = dados.logradouro;
+    campoBairro.value = dados.bairro;
+    campoCidade.value = dados.localidade;
+    statusBusca.textContent = "Endereço encontrado.";
+  } catch (erro) {
+    statusBusca.textContent = erro.message;
+    botaoTentarNovamente.hidden = false;
+    liberarPreenchimentoManual();
+  } finally {
+    form.classList.remove("is-loading");
+  }
 }
 
-// TODO 2: escute o evento "input" no campo de CEP. Quando o valor (sem
-// caracteres não numéricos) tiver exatamente 8 dígitos, guarde-o em
-// "ultimoCepBuscado" e chame buscarEndereco(cep).
-// Dica: campoCep.value.replace(/\D/g, "") remove tudo que não é dígito.
 campoCep.addEventListener("input", () => {
-  // seu código aqui
+  const digitos = campoCep.value.replace(/\D/g, "");
+  if (digitos.length === 8) {
+    ultimoCepBuscado = digitos;
+    buscarEndereco(digitos);
+  }
 });
 
-// TODO 3: no clique do botão "Tentar novamente", chame buscarEndereco()
-// de novo usando "ultimoCepBuscado".
 botaoTentarNovamente.addEventListener("click", () => {
-  // seu código aqui
+  if (ultimoCepBuscado) {
+    buscarEndereco(ultimoCepBuscado);
+  }
 });

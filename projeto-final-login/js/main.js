@@ -1,5 +1,4 @@
-// main.js: liga tudo — instancia as classes e conecta os eventos do
-// formulário de login com AuthService e as views.
+// main.js (SOLUÇÃO)
 
 import { UserApi } from "./api/UserApi.js";
 import { AuthService } from "./services/AuthService.js";
@@ -32,10 +31,10 @@ function avisarSeUsouFallback() {
   }
 }
 
-// TODO 10: mantenha o login ao recarregar a página. Ao carregar este
-// arquivo, verifique se authService.usuarioAtual() já retorna um usuário
-// (ou seja, já existe uma sessão salva). Se sim, chame mostrarPerfil()
-// direto, sem passar pelo formulário.
+const usuarioJaLogado = authService.usuarioAtual();
+if (usuarioJaLogado) {
+  mostrarPerfil(usuarioJaLogado);
+}
 
 loginView.form.addEventListener("submit", async (evento) => {
   evento.preventDefault();
@@ -44,26 +43,30 @@ loginView.form.addEventListener("submit", async (evento) => {
   const usuario = loginView.campoUsuario.value.trim();
   const senha = loginView.campoSenha.value.trim();
 
-  // TODO 6: valide se "usuario" e "senha" não estão vazios. Se algum
-  // estiver vazio, use loginView.mostrarErro("usuario", "mensagem") e/ou
-  // loginView.mostrarErro("senha", "mensagem"), foque o primeiro campo
-  // inválido e interrompa a função com "return".
+  if (usuario === "") {
+    loginView.mostrarErro("usuario", "Informe o usuário.");
+    loginView.campoUsuario.focus();
+    return;
+  }
 
-  // TODO 7: bloqueie o botão contra clique duplo (loginView.
-  // bloquearEnvio(true)) e mostre o estado de carregando
-  // (loginView.mostrarCarregando()) antes de chamar authService.login().
+  if (senha === "") {
+    loginView.mostrarErro("senha", "Informe a senha.");
+    loginView.campoSenha.focus();
+    return;
+  }
+
+  loginView.bloquearEnvio(true);
+  loginView.mostrarCarregando();
 
   try {
-    // TODO 3 (conexão): chame `await authService.login(usuario, senha)`
-    // e guarde o resultado em uma variável (ex.: usuarioEncontrado).
+    const usuarioEncontrado = await authService.login(usuario, senha);
 
     avisarSeUsouFallback();
 
-    // TODO 4: com o usuário encontrado, chame mostrarPerfil(usuarioEncontrado).
+    mostrarPerfil(usuarioEncontrado);
   } catch (erro) {
-    // TODO 5: mostre a mensagem de erro (erro.message) no campo de senha
-    // usando loginView.mostrarErro("senha", erro.message), e foque o
-    // campo de usuário para o aluno tentar de novo.
+    loginView.mostrarErro("senha", erro.message);
+    loginView.campoUsuario.focus();
   } finally {
     loginView.pararCarregando();
     loginView.bloquearEnvio(false);

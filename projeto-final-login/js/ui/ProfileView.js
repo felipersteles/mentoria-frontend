@@ -1,4 +1,4 @@
-// ProfileView: renderiza o card de perfil do usuário logado.
+// ProfileView (SOLUÇÃO)
 
 export class ProfileView {
   constructor() {
@@ -6,23 +6,37 @@ export class ProfileView {
     this.cardPerfil = document.querySelector("#card-perfil");
   }
 
-  // TODO 9: implemente renderizar(usuario, aoSair). "usuario" é o objeto
-  // retornado pela API (com name, email, location, picture). "aoSair" é
-  // uma função a ser chamada quando o botão "Sair" for clicado.
-  // Passos sugeridos:
-  //   a) limpe o card atual: this.cardPerfil.replaceChildren().
-  //   b) crie um <img> com src = usuario.picture.large e um alt
-  //      descritivo (ex.: "Foto de <nome>") — nunca deixe alt vazio aqui,
-  //      é uma foto com conteúdo relevante.
-  //   c) crie elementos de texto (com createElement + textContent) para
-  //      nome completo (usuario.name.first + " " + usuario.name.last),
-  //      e-mail (usuario.email) e cidade (usuario.location.city).
-  //   d) crie um <button type="button"> com o texto "Sair" e um
-  //      addEventListener de "click" que chama aoSair().
-  //   e) use appendChild para montar tudo dentro de this.cardPerfil.
-  //   f) mostre a seção do perfil (this.secaoPerfil.hidden = false).
   renderizar(usuario, aoSair) {
-    // seu código aqui
+    this.cardPerfil.replaceChildren();
+
+    const nomeCompleto = `${usuario.name.first} ${usuario.name.last}`;
+
+    const foto = document.createElement("img");
+    foto.src = usuario.picture.large;
+    foto.alt = `Foto de ${nomeCompleto}`;
+
+    const nome = document.createElement("p");
+    nome.textContent = nomeCompleto;
+
+    const email = document.createElement("p");
+    email.textContent = usuario.email;
+
+    const cidade = document.createElement("p");
+    cidade.textContent = usuario.location.city;
+
+    const botaoSair = document.createElement("button");
+    botaoSair.type = "button";
+    botaoSair.textContent = "Sair";
+    botaoSair.addEventListener("click", () => aoSair());
+
+    this.cardPerfil.classList.add("card-perfil");
+    this.cardPerfil.appendChild(foto);
+    this.cardPerfil.appendChild(nome);
+    this.cardPerfil.appendChild(email);
+    this.cardPerfil.appendChild(cidade);
+    this.cardPerfil.appendChild(botaoSair);
+
+    this.secaoPerfil.hidden = false;
   }
 
   esconder() {

@@ -1,5 +1,4 @@
-// LoginView: controla tudo o que aparece no formulário de login — erros,
-// estado de carregando e o botão de mostrar/esconder senha.
+// LoginView (SOLUÇÃO)
 
 export class LoginView {
   constructor() {
@@ -23,11 +22,9 @@ export class LoginView {
     this.botaoMostrarSenha.textContent = estaMostrando ? "Mostrar senha" : "Esconder senha";
   }
 
-  // TODO 8 (parte da view): implemente mostrarCarregando(). Ela deve
-  // adicionar a classe "is-loading" no formulário e escrever
-  // "Entrando..." em this.statusLogin.
   mostrarCarregando() {
-    // seu código aqui
+    this.form.classList.add("is-loading");
+    this.statusLogin.textContent = "Entrando...";
   }
 
   pararCarregando() {
@@ -57,12 +54,8 @@ export class LoginView {
     this.statusLogin.textContent = "";
   }
 
-  // TODO 8 (parte da view): implemente bloquearEnvio(bool). Quando "bool"
-  // for true, desabilite this.botaoEntrar (botao.disabled = true) para
-  // evitar clique duplo durante a requisição. Quando for false, habilite
-  // de novo.
   bloquearEnvio(bool) {
-    // seu código aqui
+    this.botaoEntrar.disabled = bool;
   }
 
   esconder() {

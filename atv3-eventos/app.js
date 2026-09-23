@@ -1,12 +1,8 @@
-// Atividade 3 — Eventos
-//
-// Objetivo: praticar validação de formulário usando o evento "submit"
-// (não o "click" do botão) e mover o foco para o primeiro campo com erro.
+// Atividade 3 — Eventos (SOLUÇÃO)
 
 const form = document.querySelector("form");
 const statusEnvio = document.querySelector("#status-envio");
 
-// Cada campo tem: o input, o elemento de erro e uma mensagem quando vazio.
 const campos = [
   { input: document.querySelector("#nome"), erro: document.querySelector("#erro-nome"), mensagem: "Informe seu nome." },
   { input: document.querySelector("#email"), erro: document.querySelector("#erro-email"), mensagem: "Informe um e-mail." },
@@ -26,23 +22,29 @@ function mostrarErroNoCampo(campo) {
   campo.input.setAttribute("aria-invalid", "true");
 }
 
-// TODO 1: para cada campo, escute o evento "input" e, quando o usuário
-// digitar algo, limpe o erro daquele campo (chame limparErroDoCampo).
-// Dica: campos.forEach((campo) => { campo.input.addEventListener(...) })
+campos.forEach((campo) => {
+  campo.input.addEventListener("input", () => limparErroDoCampo(campo));
+});
 
-// TODO 2: escute o evento "submit" do formulário (não use "click" no
-// botão). Dentro do listener, chame evento.preventDefault() para impedir
-// o recarregamento da página.
 form.addEventListener("submit", (evento) => {
-  // TODO 3: para cada campo, use trim() no valor (campo.input.value) para
-  // verificar se está vazio. Se estiver vazio, chame mostrarErroNoCampo.
-  // Guarde uma referência para o PRIMEIRO campo inválido encontrado.
+  evento.preventDefault();
 
-  // TODO 4: se houver algum campo inválido, mova o foco para o primeiro
-  // deles (método .focus()) e pare a execução (return) sem mostrar
-  // mensagem de sucesso.
+  let primeiroCampoInvalido = null;
 
-  // TODO 5: se todos os campos forem válidos, escreva uma mensagem de
-  // sucesso em "statusEnvio" (ele já tem aria-live="polite" no HTML) e
-  // limpe o formulário com form.reset().
+  campos.forEach((campo) => {
+    if (campo.input.value.trim() === "") {
+      mostrarErroNoCampo(campo);
+      if (primeiroCampoInvalido === null) {
+        primeiroCampoInvalido = campo;
+      }
+    }
+  });
+
+  if (primeiroCampoInvalido !== null) {
+    primeiroCampoInvalido.input.focus();
+    return;
+  }
+
+  statusEnvio.textContent = "Mensagem enviada com sucesso!";
+  form.reset();
 });

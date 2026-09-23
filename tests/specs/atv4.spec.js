@@ -6,20 +6,20 @@ test.describe("Atividade 4 — Criar elementos", () => {
   });
 
   test("renderiza os 4 serviços como itens de lista", async ({ page }) => {
-    const lista = page.getByRole("list");
+    const lista = page.locator("#lista-servicos");
     await expect(lista.getByRole("listitem")).toHaveCount(4);
   });
 
   test("filtro por nome reduz a lista", async ({ page }) => {
     await page.getByLabel("Filtrar por nome").fill("mentoria");
 
-    const lista = page.getByRole("list");
+    const lista = page.locator("#lista-servicos");
     await expect(lista.getByRole("listitem")).toHaveCount(1);
     await expect(lista).toContainText("Mentoria em JavaScript");
   });
 
   test("remover um item tira ele da lista", async ({ page }) => {
-    const lista = page.getByRole("list");
+    const lista = page.locator("#lista-servicos");
     await expect(lista.getByRole("listitem")).toHaveCount(4);
 
     await lista.getByRole("listitem").first().getByRole("button", { name: "Remover" }).click();
