@@ -30,6 +30,6 @@ const avisoSelecao = document.querySelector("#aviso-selecao");
 // Se algum seletor falhar, mostre uma mensagem em "avisoSelecao"
 // (remova o atributo "hidden" e use textContent) explicando qual seletor
 // não encontrou nada. Se estiver tudo certo, "avisoSelecao" deve
-// continuar escondido (hidden).
+// continuar escondido (hidden). d
 
 console.log({ titulo, linksDoMenu, secaoServicos, botaoEnviar });
