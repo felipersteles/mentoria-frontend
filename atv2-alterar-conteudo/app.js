@@ -29,18 +29,26 @@ form.addEventListener("submit", (evento) => {
   if (!emailValido(valor)) {
     // TODO 1: escreva a mensagem "Informe um e-mail válido." dentro de
     // "erroEmail" usando textContent.
+    erroEmail.textContent = "Informe um e-mail válido.";
 
     // TODO 2: no campo "campoEmail", defina os atributos
     // aria-invalid="true" e aria-describedby="erro-email".
     // Dica: campoEmail.setAttribute("nome-do-atributo", "valor")
+    campoEmail.setAttribute("aria-invalid", "true");
+    campoEmail.setAttribute("aria-describedby", "erro-email");
 
     // TODO 3: adicione a classe "is-error" em "campoEmail".
     // Dica: campoEmail.classList.add("nome-da-classe")
+    campoEmail.classList.add("is-error");
   } else {
     // TODO 4: quando o e-mail for válido, faça o caminho inverso do que
     // você fez acima: limpe o texto de "erroEmail", remova os atributos
     // aria-invalid e aria-describedby de "campoEmail" (removeAttribute) e
     // remova a classe "is-error".
+    erroEmail.textContent = "";
+    campoEmail.setAttribute("aria-invalid", "false");
+    campoEmail.removeAttribute("aria-describedby");
+    campoEmail.classList.remove("is-error");
   }
 
   atualizarPainelDebug();
@@ -52,4 +60,11 @@ botaoTema.addEventListener("click", () => {
   // "false", de acordo com o novo estado.
   // Dica: document.body.classList.toggle("nome-da-classe") retorna um
   // booleano dizendo se a classe ficou presente ou não.
+  if (botaoTema.getAttribute("aria-pressed") === "true") {
+    botaoTema.setAttribute("aria-pressed", "false");
+  } else {
+    botaoTema.setAttribute("aria-pressed", "true");
+  }
+  document.body.classList.toggle("dark");
+
 });
