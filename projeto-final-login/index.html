@@ -17,15 +17,13 @@
   </header>
 
   <main id="conteudo">
-    <section id="aviso-fallback" class="aviso aviso-erro" hidden></section>
-
     <section id="secao-login">
       <h2>Entrar</h2>
       <form id="form-login" novalidate>
         <div class="campo">
-          <label for="usuario">Usuário</label>
-          <input type="text" id="usuario" name="usuario" autocomplete="username" />
-          <p id="erro-usuario" class="mensagem-erro"></p>
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" autocomplete="username" />
+          <p id="erro-email" class="mensagem-erro"></p>
         </div>
 
         <div class="campo">
@@ -34,19 +32,10 @@
           <p id="erro-senha" class="mensagem-erro"></p>
         </div>
 
-        <button id="botao-mostrar-senha" type="button" class="botao-secundario" aria-pressed="false">
-          Mostrar senha
-        </button>
-
         <button id="botao-entrar" type="submit">Entrar</button>
 
         <p id="status-login" role="status" aria-live="polite"></p>
       </form>
-    </section>
-
-    <section id="secao-perfil" hidden>
-      <h2>Seu perfil</h2>
-      <div id="card-perfil"></div>
     </section>
   </main>
 

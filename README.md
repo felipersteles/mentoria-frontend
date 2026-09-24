@@ -54,7 +54,7 @@ sem bundler e sem `npm` para rodar as atividades.
 | 3 | [`atv3-eventos`](./atv3-eventos) | Eventos, `preventDefault` e validação de formulário |
 | 4 | [`atv4-criar-elementos`](./atv4-criar-elementos) | Criar elementos dinamicamente a partir de dados |
 | 5 | [`atv5-dados-de-fora`](./atv5-dados-de-fora) | `fetch`, `async/await` e dados de uma API |
-| 🏁 | [`projeto-final-login`](./projeto-final-login) | Tudo junto, organizado em classes |
+| 🏁 | [`projeto-final-login`](./projeto-final-login) | Login com usuário fixo e redirecionamento |
 
 Cada pasta tem seu próprio `README.md` com objetivo, passos, dicas e os
 critérios de "pronto quando".

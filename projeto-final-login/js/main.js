@@ -1,71 +1,53 @@
-// main.js: liga tudo — instancia as classes e conecta os eventos do
-// formulário de login com AuthService e as views.
+// main.js: valida o formulário de login e redireciona para o dashboard.
+// Não há API nem banco de dados — o único usuário válido é o de baixo.
 
-import { UserApi } from "./api/UserApi.js";
-import { AuthService } from "./services/AuthService.js";
-import { LoginView } from "./ui/LoginView.js";
-import { ProfileView } from "./ui/ProfileView.js";
+const USUARIO_VALIDO = {
+  email: "exemplo@email.com",
+  senha: "senha123",
+};
 
-const userApi = new UserApi("https://randomuser.me/api", "mentoria-ceuma");
-const authService = new AuthService(userApi);
-const loginView = new LoginView();
-const profileView = new ProfileView();
+const CHAVE_SESSAO = "mentoria-js:usuario-logado";
 
-const avisoFallback = document.querySelector("#aviso-fallback");
+const form = document.querySelector("#form-login");
+const campoEmail = document.querySelector("#email");
+const campoSenha = document.querySelector("#senha");
+const erroEmail = document.querySelector("#erro-email");
+const erroSenha = document.querySelector("#erro-senha");
+const statusLogin = document.querySelector("#status-login");
 
-function mostrarPerfil(usuario) {
-  loginView.esconder();
-  profileView.renderizar(usuario, aoSair);
+function limparErros() {
+  erroEmail.textContent = "";
+  erroSenha.textContent = "";
+  campoEmail.classList.remove("is-error");
+  campoSenha.classList.remove("is-error");
+  statusLogin.textContent = "";
 }
 
-function aoSair() {
-  authService.logout();
-  profileView.esconder();
-  loginView.mostrar();
+function mostrarErro(campo, elementoErro, mensagem) {
+  elementoErro.textContent = mensagem;
+  campo.classList.add("is-error");
+  campo.focus();
 }
 
-function avisarSeUsouFallback() {
-  if (userApi.usouFallback) {
-    avisoFallback.hidden = false;
-    avisoFallback.textContent =
-      "Não foi possível conectar à API de usuários. Mostrando dados de exemplo salvos localmente.";
-  }
-}
-
-// TODO 10: mantenha o login ao recarregar a página. Ao carregar este
-// arquivo, verifique se authService.usuarioAtual() já retorna um usuário
-// (ou seja, já existe uma sessão salva). Se sim, chame mostrarPerfil()
-// direto, sem passar pelo formulário.
-
-loginView.form.addEventListener("submit", async (evento) => {
+form.addEventListener("submit", (evento) => {
   evento.preventDefault();
-  loginView.limparErros();
+  limparErros();
 
-  const usuario = loginView.campoUsuario.value.trim();
-  const senha = loginView.campoSenha.value.trim();
+  const email = campoEmail.value.trim();
+  const senha = campoSenha.value.trim();
 
-  // TODO 6: valide se "usuario" e "senha" não estão vazios. Se algum
-  // estiver vazio, use loginView.mostrarErro("usuario", "mensagem") e/ou
-  // loginView.mostrarErro("senha", "mensagem"), foque o primeiro campo
-  // inválido e interrompa a função com "return".
+  // TODO 1: valide se "email" e "senha" não estão vazios. Se algum dos
+  // dois estiver vazio, chame mostrarErro(campo, elementoErro, "mensagem")
+  // para o campo certo (campoEmail/erroEmail ou campoSenha/erroSenha) e
+  // use "return" para interromper a função.
 
-  // TODO 7: bloqueie o botão contra clique duplo (loginView.
-  // bloquearEnvio(true)) e mostre o estado de carregando
-  // (loginView.mostrarCarregando()) antes de chamar authService.login().
+  // TODO 2: compare "email" e "senha" com USUARIO_VALIDO.email e
+  // USUARIO_VALIDO.senha. Se não baterem, chame
+  // mostrarErro(campoSenha, erroSenha, "E-mail ou senha inválidos")
+  // e "return".
 
-  try {
-    // TODO 3 (conexão): chame `await authService.login(usuario, senha)`
-    // e guarde o resultado em uma variável (ex.: usuarioEncontrado).
-
-    avisarSeUsouFallback();
-
-    // TODO 4: com o usuário encontrado, chame mostrarPerfil(usuarioEncontrado).
-  } catch (erro) {
-    // TODO 5: mostre a mensagem de erro (erro.message) no campo de senha
-    // usando loginView.mostrarErro("senha", erro.message), e foque o
-    // campo de usuário para o aluno tentar de novo.
-  } finally {
-    loginView.pararCarregando();
-    loginView.bloquearEnvio(false);
-  }
+  // TODO 3: se as credenciais estiverem certas, salve o e-mail em
+  // sessionStorage (sessionStorage.setItem(CHAVE_SESSAO, email)) e
+  // redirecione o navegador para "dash.html" usando
+  // window.location.href = "dash.html".
 });
