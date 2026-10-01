@@ -1,101 +1,136 @@
-# Mentoria JS — Manipulação do DOM
+# Mentoria Front-end — Universidade CEUMA
 
-Repositório da mentoria de JavaScript da Universidade CEUMA. O foco é
-manipulação do DOM com **HTML, CSS e JavaScript puros** — sem frameworks,
-sem bundler e sem `npm` para rodar as atividades.
+Repositório da mentoria de front-end da Universidade CEUMA. O conteúdo é
+dividido em **três módulos numerados**, feitos com **HTML, CSS e JavaScript
+puros** — sem framework, sem bundler e sem `npm` para rodar as atividades.
+
+Se você nunca escreveu uma linha de código, está no lugar certo: comece pelo
+módulo 1 e siga a ordem.
+
+## Os módulos, na ordem
+
+| # | Módulo | Você aprende a | Precisa ter feito antes |
+|---|--------|----------------|-------------------------|
+| 1 | [`modulo-1-html`](./modulo-1-html) | Escrever a estrutura de uma página com HTML semântico | — |
+| 2 | [`modulo-2-javascript`](./modulo-2-javascript) | Ler e mudar a página com JavaScript (DOM) | módulo 1 |
+| 3 | [`modulo-3-css`](./modulo-3-css) | Dar aparência e layout à página com CSS | módulo 1 |
+
+Faça **na ordem**. Cada módulo tem um `README.md` com o objetivo, a lista de
+atividades, como abrir com o Live Server e o checklist de entrega. Cada
+atividade também tem o seu próprio `README.md`.
+
+A pasta [`shared/style.css`](./shared/style.css) tem o CSS compartilhado
+pelas atividades do módulo 2 — ele existe para que você possa focar no
+JavaScript sem se preocupar com aparência. No módulo 3, cada atividade tem o
+seu próprio `style.css`, que é justamente o que você vai escrever.
 
 ## Como começar
 
-1. **Faça um fork ou clone o repositório**
+### 1. Clone o repositório
 
-   ```bash
-   git clone <url-do-repositorio>
-   cd mentoria-js
-   ```
+```bash
+git clone https://github.com/felipersteles/mentoria-frontend.git
+cd mentoria-frontend
+```
 
-2. **Crie uma branch com o seu nome**
+### 2. Crie uma branch com o seu nome
 
-   ```bash
-   git checkout -b seu-nome
-   ```
+Nunca trabalhe direto na `main`. Crie uma branch sua:
 
-   Use um nome simples, sem espaços e sem acentos (ex.: `maria-silva`).
+```bash
+git checkout -b seu-nome
+```
 
-3. **Abra as atividades com o Live Server**
+Use um nome simples, sem espaços e sem acentos — por exemplo
+`maria-silva`. Você vai usar essa mesma branch do começo ao fim da mentoria.
 
-   No VS Code, instale a extensão *Live Server*, clique com o botão direito
-   no `index.html` da atividade e escolha **"Open with Live Server"**. Não é
-   necessário instalar nada com `npm` para isso.
+Para conferir em qual branch você está:
 
-4. **Complete os `// TODO`**
+```bash
+git branch
+```
 
-   Cada atividade tem um `app.js` incompleto. Os comentários `// TODO 1`,
-   `// TODO 2`, etc. explicam o que fazer, na ordem em que devem ser feitos.
-   Não é necessário mexer no HTML ou no CSS.
+### 3. Instale o Live Server no VS Code
 
-5. **Commite e abra um Pull Request**
+No VS Code, abra a aba de extensões e instale **Live Server** (autor:
+Ritwick Dey). Depois, clique com o botão direito no `index.html` da
+atividade e escolha **"Open with Live Server"**.
 
-   ```bash
-   git add .
-   git commit -m "atv1: encontrar elementos"
-   git push origin seu-nome
-   ```
+O navegador abre sozinho e recarrega a cada vez que você salva um arquivo.
+Não é preciso instalar nada com `npm` para fazer as atividades.
 
-   Abra um Pull Request da sua branch (`seu-nome`) para a `main` no GitHub.
-   Um PR por atividade é o ideal, mas um único PR ao final também é aceito
-   — combine com o mentor.
+> Abrir o arquivo com duplo clique (`file://`) funciona nos módulos 1 e 3,
+> mas **não** no módulo 2: os scripts usam `type="module"`, que exige
+> `http://`. Pegue o hábito de usar sempre o Live Server.
 
-## Ordem das atividades
+### 4. Faça commits pequenos
 
-| # | Pasta | Conceito principal |
-|---|-------|---------------------|
-| 1 | [`atv1-encontrar-elementos`](./atv1-encontrar-elementos) | Seleção de elementos (`querySelector` e afins) |
-| 2 | [`atv2-alterar-conteudo`](./atv2-alterar-conteudo) | Alterar texto, classes e atributos |
-| 3 | [`atv3-eventos`](./atv3-eventos) | Eventos, `preventDefault` e validação de formulário |
-| 4 | [`atv4-criar-elementos`](./atv4-criar-elementos) | Criar elementos dinamicamente a partir de dados |
-| 5 | [`atv5-dados-de-fora`](./atv5-dados-de-fora) | `fetch`, `async/await` e dados de uma API |
-| 🏁 | [`projeto-final-login`](./projeto-final-login) | Login com usuário fixo e redirecionamento |
+Um commit por atividade (ou menos). Commit grande é difícil de revisar e
+difícil de desfazer:
 
-Cada pasta tem seu próprio `README.md` com objetivo, passos, dicas e os
-critérios de "pronto quando".
+```bash
+git add modulo-1-html
+git commit -m "modulo 1: pagina inicial do meu site"
+```
 
-## Branch `solucoes`
+Dicas de mensagem de commit:
 
-Se você travar em alguma atividade, a branch `solucoes` tem todas as
-atividades resolvidas como referência:
+- Comece pelo módulo: `modulo 2: atv1 encontrar elementos`.
+- Escreva o que mudou, não o que você sentiu: evite "ajustes", "correções"
+  e "teste".
+- Prefira vários commits pequenos a um commit "fim da mentoria".
+
+Para enviar sua branch para o GitHub:
+
+```bash
+git push origin seu-nome
+```
+
+Na primeira vez, o Git pode pedir `git push --set-upstream origin seu-nome`
+— é só copiar o comando que ele sugere.
+
+### 5. Abra o Pull Request
+
+1. Entre no repositório no GitHub.
+2. O site mostra um aviso "Compare & pull request" para a sua branch —
+   clique nele. (Ou vá na aba **Pull requests** → **New pull request**.)
+3. Confira: **base** = `main`, **compare** = `seu-nome`.
+4. No título, diga o que está entregando: `Módulo 1 — projeto meu site`.
+5. Na descrição, cole o checklist de entrega do módulo e marque o que você
+   conferiu.
+6. Clique em **Create pull request**.
+
+Um PR por módulo é o ideal. O mentor vai comentar no seu PR — responder a
+comentário de revisão faz parte do aprendizado. Para corrigir algo, continue
+commitando na mesma branch: o PR se atualiza sozinho.
+
+## A branch `solucoes`
+
+Se você travar, a branch [`solucoes`](../../tree/solucoes) tem todas as
+atividades resolvidas, com a mesma estrutura de módulos:
 
 ```bash
 git checkout solucoes
 ```
 
-Tente resolver sozinho antes de olhar — é assim que se aprende DOM de
-verdade. Volte para a sua branch com `git checkout seu-nome` depois de
-consultar.
-
-## Testes automatizados (opcional)
-
-A pasta [`tests/`](./tests) tem testes em Playwright, um por atividade, que
-usam `getByRole` e `getByLabel` em vez de seletores de classe. Isso só
-funciona porque o HTML é semântico — é uma boa forma de ver na prática por
-que isso importa.
+Tente resolver sozinho primeiro — é assim que se aprende. Depois de
+consultar, volte para a sua branch:
 
 ```bash
-cd tests
-npm install
-npx playwright test
+git checkout seu-nome
 ```
 
-Os testes passam na branch `solucoes` e falham na `main` (porque os `TODO`
-ainda não foram resolvidos).
+## Checklist geral
 
-## Checklist final
+Vale para qualquer módulo, antes de abrir o Pull Request:
 
-Antes de abrir o Pull Request, confira:
-
-- [ ] O HTML continua semântico (não vire tudo `div` e `span`).
-- [ ] Todo `label` está associado ao campo certo (`for`/`id`).
-- [ ] Dá para usar a página inteira só com `Tab` e `Enter`, sem mouse.
-- [ ] Os estados de carregando, vazio e erro aparecem visualmente na tela.
-- [ ] Nenhum `innerHTML` foi usado com dado vindo do usuário ou de uma API.
+- [ ] Nenhum TODO ficou para trás.
+- [ ] O console do navegador (`F12`) não mostra erro em vermelho.
+- [ ] O HTML continua semântico — nada virou um monte de `div` e `span`.
+- [ ] Todo `label` está ligado ao campo certo (`for` igual ao `id`).
+- [ ] Dá para usar a página inteira só com `Tab` e `Enter`, e sempre dá para
+      ver onde o foco está.
+- [ ] Em 375px de largura não há rolagem horizontal.
+- [ ] Você está na sua branch, não na `main`.
 
 Bons estudos!
