@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("Atividade 1 — Encontrar elementos", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/atv1-encontrar-elementos/");
+    await page.goto("/modulo-2-javascript/atv1-encontrar-elementos/");
   });
 
   test("mostra a contagem correta de links do menu", async ({ page }) => {

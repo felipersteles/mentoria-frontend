@@ -16,7 +16,7 @@ test.describe("Atividade 5 — Dados de fora", () => {
       });
     });
 
-    await page.goto("/atv5-dados-de-fora/");
+    await page.goto("/modulo-2-javascript/extras/atv5-dados-de-fora/");
     await page.getByLabel("CEP").fill("01001000");
 
     await expect(page.getByLabel("Rua")).toHaveValue("Praça da Sé");
@@ -33,7 +33,7 @@ test.describe("Atividade 5 — Dados de fora", () => {
       });
     });
 
-    await page.goto("/atv5-dados-de-fora/");
+    await page.goto("/modulo-2-javascript/extras/atv5-dados-de-fora/");
     await page.getByLabel("CEP").fill("00000000");
 
     await expect(page.getByRole("button", { name: "Tentar novamente" })).toBeVisible();
@@ -44,7 +44,7 @@ test.describe("Atividade 5 — Dados de fora", () => {
   test("erro de rede também mostra mensagem e libera preenchimento manual", async ({ page }) => {
     await page.route("https://viacep.com.br/ws/**", (route) => route.abort("failed"));
 
-    await page.goto("/atv5-dados-de-fora/");
+    await page.goto("/modulo-2-javascript/extras/atv5-dados-de-fora/");
     await page.getByLabel("CEP").fill("01001000");
 
     await expect(page.getByRole("button", { name: "Tentar novamente" })).toBeVisible();

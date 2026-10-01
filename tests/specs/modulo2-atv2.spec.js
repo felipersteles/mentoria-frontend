@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("Atividade 2 — Alterar conteúdo", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/atv2-alterar-conteudo/");
+    await page.goto("/modulo-2-javascript/atv2-alterar-conteudo/");
   });
 
   test("e-mail inválido mostra erro acessível", async ({ page }) => {

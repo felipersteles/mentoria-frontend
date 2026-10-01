@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("Atividade 3 — Eventos", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/atv3-eventos/");
+    await page.goto("/modulo-2-javascript/extras/atv3-eventos/");
   });
 
   test("enviar vazio mostra erros e foca o primeiro campo", async ({ page }) => {

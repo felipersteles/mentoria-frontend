@@ -1,8 +1,8 @@
 {
-  "name": "mentoria-js-tests",
+  "name": "mentoria-frontend-tests",
   "private": true,
   "version": "1.0.0",
-  "description": "Testes Playwright das atividades da Mentoria JS CEUMA",
+  "description": "Testes Playwright das atividades da Mentoria Front-end CEUMA",
   "scripts": {
     "test": "playwright test"
   },

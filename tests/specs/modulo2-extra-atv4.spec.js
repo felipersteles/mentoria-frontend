@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("Atividade 4 — Criar elementos", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/atv4-criar-elementos/");
+    await page.goto("/modulo-2-javascript/extras/atv4-criar-elementos/");
   });
 
   test("renderiza os 4 serviços como itens de lista", async ({ page }) => {
