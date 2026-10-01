@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu site — Contato</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!--
+    Segunda página do projeto. O foco aqui é formulário em HTML:
+    cada campo precisa de um <label> ligado a ele pelo "for"/"id".
+    Sem isso, quem usa leitor de tela não sabe o que digitar.
+  -->
+
+  <header>
+    <h1>Contato</h1>
+
+    <nav aria-label="Navegação principal">
+      <ul>
+        <!-- TODO 1: adicione um <li> com um link para "index.html"
+             escrito "Início", e outro <li> com um link para esta mesma
+             página ("contato.html") escrito "Contato". -->
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="fale-comigo">
+      <h2>Fale comigo</h2>
+      <p>Preencha o formulário abaixo e eu respondo no e-mail informado.</p>
+
+      <form>
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" />
+        </div>
+
+        <!-- TODO 2: crie o campo de e-mail copiando o bloco acima:
+             uma <div class="campo">, um <label for="email">E-mail</label>
+             e um <input type="email" id="email" name="email" />.
+             Repare que o "for" do label é igual ao "id" do input. -->
+
+        <!-- TODO 3: crie um campo de mensagem usando <textarea>:
+             <label for="mensagem">Mensagem</label> e
+             <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+             O <textarea> não usa "value"; ele abre e fecha. -->
+
+        <!-- TODO 4: adicione <button type="submit">Enviar</button> no
+             final do formulário. -->
+      </form>
+    </section>
+
+    <section id="outros-canais">
+      <h2>Outros canais</h2>
+
+      <!-- TODO 5: use uma lista de descrição (<dl>) com dois pares:
+           <dt>E-mail</dt> + <dd>seu@email.com</dd> e
+           <dt>Cidade</dt> + <dd>São Luís — MA</dd> -->
+    </section>
+  </main>
+
+  <!-- TODO 6: repita aqui o mesmo <footer> que você fez no index.html,
+       para as duas páginas ficarem iguais no rodapé. -->
+
+</body>
+</html>
