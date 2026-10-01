@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Juntar o que foi praticado nas atividades 1 a 5 num projeto único: uma tela
+Juntar o que foi praticado nas atividades 1 e 2 num projeto único: uma tela
 de login que valida um usuário fixo e, se as credenciais estiverem certas,
 leva para uma página de dashboard.
 
