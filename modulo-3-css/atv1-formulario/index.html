@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Módulo 3 · Atividade 1 — Formulário</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!--
+    Este HTML está PRONTO. Nesta atividade você mexe só no style.css.
+    Leia a estrutura antes de começar: saber o que é .campo, o que é
+    fieldset e onde estão as classes é metade do trabalho do CSS.
+  -->
+
+  <header>
+    <h1>Inscrição na mentoria</h1>
+    <p>Preencha os dados abaixo para garantir sua vaga.</p>
+  </header>
+
+  <main>
+    <form class="formulario">
+      <div class="campo">
+        <label for="nome">Nome completo</label>
+        <input type="text" id="nome" name="nome" autocomplete="name" required />
+      </div>
+
+      <div class="campo">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" autocomplete="email" required />
+      </div>
+
+      <div class="campo">
+        <label for="telefone">Telefone</label>
+        <input
+          type="tel"
+          id="telefone"
+          name="telefone"
+          autocomplete="tel"
+          placeholder="(98) 99999-9999"
+          required
+        />
+      </div>
+
+      <div class="campo">
+        <label for="nascimento">Data de nascimento</label>
+        <input type="date" id="nascimento" name="nascimento" required />
+      </div>
+
+      <div class="campo">
+        <label for="curso">Curso</label>
+        <select id="curso" name="curso" required>
+          <option value="">Selecione seu curso</option>
+          <option value="si">Sistemas de Informação</option>
+          <option value="cc">Ciência da Computação</option>
+          <option value="eng">Engenharia</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <fieldset class="campo-turno">
+        <legend>Turno de preferência</legend>
+
+        <div class="opcoes">
+          <label class="opcao">
+            <input type="radio" name="turno" value="manha" required />
+            Manhã
+          </label>
+
+          <label class="opcao">
+            <input type="radio" name="turno" value="tarde" />
+            Tarde
+          </label>
+
+          <label class="opcao">
+            <input type="radio" name="turno" value="noite" />
+            Noite
+          </label>
+        </div>
+      </fieldset>
+
+      <div class="campo">
+        <label for="mensagem">Por que você quer participar?</label>
+        <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+      </div>
+
+      <div class="campo-inline">
+        <input type="checkbox" id="termos" name="termos" required />
+        <label for="termos">Li e aceito os termos da mentoria</label>
+      </div>
+
+      <button type="submit">Enviar inscrição</button>
+    </form>
+  </main>
+
+  <footer>
+    <p>Módulo 3 · Atividade 1 — Mentoria Front-end CEUMA</p>
+  </footer>
+</body>
+</html>

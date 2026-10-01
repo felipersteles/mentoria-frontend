@@ -1,0 +1,213 @@
+/*
+  Módulo 3 · Atividade 1 — Formulário
+
+  O index.html está pronto. Todo o trabalho é aqui.
+  Complete os TODO na ordem, salvando e olhando o navegador a cada
+  passo. Não use nenhum framework — só CSS.
+*/
+
+:root {
+  --cor-fundo: #f7f7fb;
+  --cor-texto: #1f2430;
+  --cor-primaria: #4338ca;
+  --cor-borda: #d7d9e3;
+  --cor-erro: #b91c1c;
+  --cor-superficie: #ffffff;
+  --raio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+header,
+main,
+footer {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+footer {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 1 — Alinhar cada campo
+   Hoje o label e o input ficam colados e lado a lado, porque o
+   .formulario é flex e todos os filhos entram na mesma lógica.
+   Faça o .campo ser um flex em COLUNA, com um espaço pequeno
+   (gap) entre o label e o campo.
+
+   Propriedades: display, flex-direction, gap                        */
+/* ------------------------------------------------------------------ */
+
+.campo {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 2 — Dar a mesma aparência a todos os campos
+   input, select e textarea nascem com estilos diferentes em cada
+   navegador. Dê a eles: um espaçamento interno confortável (padding),
+   uma borda de 1px usando var(--cor-borda), um canto arredondado com
+   var(--raio) e `font: inherit` para que todos herdem a fonte do body
+   (sem isso, o select e o textarea aparecem com outra fonte).
+
+   Propriedades: padding, border, border-radius, font, background-color,
+                 color, width                                        */
+/* ------------------------------------------------------------------ */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 3 — Opções de turno lado a lado
+   As três opções de turno estão empilhadas. Coloque-as na mesma linha,
+   com um espaço entre elas, usando flex no .opcoes.
+   Depois, faça cada .opcao também ser um flex em LINHA, para o
+   quadradinho do radio ficar alinhado com o texto ao lado.
+
+   Propriedades: display, gap, flex-wrap, align-items                */
+/* ------------------------------------------------------------------ */
+
+.opcoes {
+  /* escreva aqui */
+}
+
+.opcao {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 4 — Foco visível
+   Aperte Tab e repare: hoje quase não se vê onde você está. Isso torna
+   o formulário inutilizável para quem navega por teclado.
+   Dê um contorno bem visível quando o campo recebe foco por teclado.
+
+   Use :focus-visible (e não :focus), outline de 3px na var(--cor-primaria)
+   e um outline-offset de 2px para o contorno não encostar na borda.
+
+   Propriedades: outline, outline-offset                             */
+/* ------------------------------------------------------------------ */
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 5 — Erro só depois que o aluno mexeu no campo
+   Existe :invalid, mas ele marca o campo como errado desde o primeiro
+   segundo — antes de a pessoa digitar qualquer coisa. Péssimo.
+   Use :user-invalid, que só vale depois que a pessoa interagiu com o
+   campo (ou tentou enviar o formulário), e dê a ele uma borda na
+   var(--cor-erro).
+
+   Propriedades: border-color                                        */
+/* ------------------------------------------------------------------ */
+
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 6 — Cor dos controles nativos
+   O radio e o checkbox ainda estão azul-padrão do navegador. Uma única
+   propriedade, aplicada no .formulario, pinta os dois com a cor do
+   projeto — sem precisar esconder o controle nativo nem recriá-lo.
+
+   Propriedade: accent-color                                         */
+/* ------------------------------------------------------------------ */
+
+.formulario {
+  /* escreva aqui (sim, repetindo o seletor: o CSS junta as duas regras) */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* A partir daqui já está pronto — não precisa mexer. */
+
+.campo-turno {
+  margin: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 0.75rem 1rem 1rem;
+}
+
+.campo-turno legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 0.35rem;
+}
+
+.campo-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.campo-inline label {
+  font-weight: 400;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  align-self: flex-start;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: var(--raio);
+  background-color: var(--cor-primaria);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}

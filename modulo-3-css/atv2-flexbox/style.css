@@ -1,0 +1,174 @@
+/*
+  Módulo 3 · Atividade 2 — Flexbox
+
+  O index.html está pronto. Todo o trabalho é aqui.
+  Complete os TODO na ordem. Depois de cada um, salve e olhe o navegador:
+  o flexbox só faz sentido quando você vê a caixa se mexendo.
+*/
+
+:root {
+  --cor-fundo: #f7f7fb;
+  --cor-texto: #1f2430;
+  --cor-primaria: #4338ca;
+  --cor-borda: #d7d9e3;
+  --cor-superficie: #ffffff;
+  --raio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+.cabecalho {
+  padding: 1rem 1.5rem;
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.logo strong {
+  color: var(--cor-primaria);
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--cor-primaria);
+  text-decoration: underline;
+}
+
+main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  width: 100%;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem;
+}
+
+.card {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.rodape {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--cor-borda);
+  background-color: var(--cor-superficie);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 1 — Logo em uma ponta, menu na outra
+   Faça o .cabecalho ser um flex e empurre a logo para a esquerda e o
+   menu para a direita, com os dois alinhados verticalmente no centro.
+
+   Propriedades: display, justify-content, align-items, flex-wrap, gap  */
+/* ------------------------------------------------------------------ */
+
+.cabecalho {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 2 — Links do menu na mesma linha, com espaço entre eles
+   Os quatro <li> do .menu estão empilhados (é o padrão de uma lista).
+   Coloque-os na mesma linha e dê um espaço entre eles com `gap` —
+   não use margin.
+
+   Propriedades: display, gap                                          */
+/* ------------------------------------------------------------------ */
+
+.menu {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 3 — Grade de cards que quebra linha sozinha
+   Os seis .card estão um embaixo do outro. Faça o .cards ser um flex
+   que permite quebra de linha (flex-wrap) e tem espaço entre os itens.
+
+   Depois, no .card, use a propriedade `flex` com três valores:
+     flex: 1 1 260px;
+   que significa "pode crescer, pode encolher, e a largura ideal é
+   260px". É isso que faz os cards se reorganizarem conforme a largura
+   da janela, sem nenhuma media query.
+
+   Propriedades: display, flex-wrap, gap, flex                         */
+/* ------------------------------------------------------------------ */
+
+.cards {
+  /* escreva aqui */
+}
+
+.card {
+  /* escreva aqui (só a propriedade flex; o resto do .card já está feito) */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 4 — Rodapé sempre no fim da página
+   Diminua o conteúdo da página (ou abra em uma tela grande) e repare
+   que o rodapé "sobe" e deixa um vazio embaixo dele.
+
+   Faça o <body> ser um flex em COLUNA com altura mínima de uma tela
+   inteira (min-height: 100vh) e deixe o <main> ocupar todo o espaço
+   que sobrar com `flex: 1`. O rodapé vai parar no fim da tela.
+
+   Propriedades: display, flex-direction, min-height, flex             */
+/* ------------------------------------------------------------------ */
+
+body {
+  /* escreva aqui */
+}
+
+main {
+  /* escreva aqui */
+}

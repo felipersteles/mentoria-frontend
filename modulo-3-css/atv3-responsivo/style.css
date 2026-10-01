@@ -1,0 +1,238 @@
+/*
+  Módulo 3 · Atividade 3 — Responsivo
+
+  Ponto de partida: o CSS da atividade 2 JÁ RESOLVIDO (está tudo aqui
+  embaixo, na seção "layout herdado da atividade 2").
+
+  O problema: esse layout foi pensado olhando uma tela de notebook. No
+  celular ele quebra — e é isso que você vai consertar.
+
+  A regra do jogo é "mobile first": o CSS que fica FORA de qualquer
+  @media é o do celular; o layout de tela grande entra depois, dentro de
+  uma @media. Parece invertido, mas é mais simples — telas pequenas têm
+  menos espaço, então têm menos exceções.
+
+  Complete os TODO na ordem.
+*/
+
+:root {
+  --cor-fundo: #f7f7fb;
+  --cor-texto: #1f2430;
+  --cor-primaria: #4338ca;
+  --cor-borda: #d7d9e3;
+  --cor-superficie: #ffffff;
+  --raio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* ---------------- layout herdado da atividade 2 ---------------- */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.logo strong {
+  color: var(--cor-primaria);
+}
+
+.menu {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--cor-primaria);
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1 {
+  margin: 1rem 0 0.25rem;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  flex: 1 1 260px;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.banner {
+  border-radius: var(--raio);
+}
+
+.rodape {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--cor-borda);
+  background-color: var(--cor-superficie);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 1 — Conferir a meta viewport  (nenhum CSS para escrever)
+   Abra o index.html e encontre esta linha dentro do <head>:
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+   Sem ela, o celular finge ter uma tela de ~980px e encolhe a página
+   toda — e aí nenhuma @media funciona, porque o navegador mente sobre
+   a largura.
+
+   Para ver com os próprios olhos: comente essa linha, abra o modo
+   celular (F12 → ícone de celular → 375px), e DEPOIS descomente.
+   Deixe a linha ativa no final.                                      */
+/* ------------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 2 — O padrão agora é o celular
+   Abra a página em 375px de largura (F12 → ícone de celular → escolha
+   "iPhone SE" ou digite 375). O menu e os cards estão apertados.
+
+   Fora de qualquer @media, empilhe as coisas:
+     - .cabecalho em COLUNA, alinhado à esquerda (align-items)
+     - .menu em COLUNA, com um gap menor
+     - .cards em COLUNA
+
+   Você vai MUDAR as regras que já existem lá em cima (é esse o
+   exercício: o layout de celular passa a ser o padrão).
+
+   Propriedades: flex-direction, align-items, gap                     */
+/* ------------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 3 — O desktop vira a exceção
+   Agora escreva a @media que devolve o layout de tela grande a partir
+   de 768px:
+
+     @media (min-width: 768px) {
+       ...
+     }
+
+   Dentro dela, volte .cabecalho, .menu e .cards para `row` e devolva o
+   align-items: center do cabeçalho e o gap maior do menu.
+
+   Leia como: "a partir de 768px de largura, vale também isto".       */
+/* ------------------------------------------------------------------ */
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 4 — Título que acompanha a tela
+   No celular o <h1> fica grande demais; no desktop, pequeno demais.
+   Em vez de duas media queries, use clamp(), que recebe três valores:
+
+     font-size: clamp(mínimo, ideal, máximo);
+
+   O valor do meio costuma usar uma unidade que depende da largura da
+   tela (vw). Um ponto de partida razoável: mínimo 1.5rem, ideal 5vw,
+   máximo 2.5rem — teste e ajuste.
+
+   Propriedade: font-size                                             */
+/* ------------------------------------------------------------------ */
+
+h1 {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 5 — Imagem que não estoura a tela
+   O banner tem 1200px de largura no arquivo. Em 375px ele empurra a
+   página inteira para o lado e cria rolagem horizontal — o defeito
+   número 1 de página "responsiva".
+
+   Faça toda <img> caber na largura disponível, mantendo a proporção
+   (sem height: auto a imagem achata).
+
+   Propriedades: max-width, height                                    */
+/* ------------------------------------------------------------------ */
+
+img {
+  /* escreva aqui */
+}
+
+
+/* ------------------------------------------------------------------ */
+/* DESAFIO OPCIONAL — trocar flex por grid nos cards
+   Flexbox resolve, mas para uma grade de cards o Grid é mais direto.
+   Em vez de .cards flex + .card flex: 1 1 260px, experimente:
+
+     .cards {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+       gap: 1.25rem;
+     }
+
+   Leia `auto-fit` + `minmax(240px, 1fr)` como: "crie quantas colunas
+   couberem, cada uma com no mínimo 240px, dividindo o resto igualmente".
+   Repare que isso dispensa a @media para os cards — e que, se você usar
+   grid, o `flex: 1 1 260px` do .card não faz mais nada e pode sair.     */
+/* ------------------------------------------------------------------ */
