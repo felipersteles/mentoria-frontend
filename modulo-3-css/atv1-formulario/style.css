@@ -1,0 +1,165 @@
+/*
+  Módulo 3 · Atividade 1 — Formulário (SOLUÇÃO)
+
+  Cada TODO está marcado com o número correspondente, para você comparar
+  com o que escreveu.
+*/
+
+:root {
+  --cor-fundo: #f7f7fb;
+  --cor-texto: #1f2430;
+  --cor-primaria: #4338ca;
+  --cor-borda: #d7d9e3;
+  --cor-erro: #b91c1c;
+  --cor-superficie: #ffffff;
+  --raio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+header,
+main,
+footer {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+footer {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.5rem;
+
+  /* TODO 6 — uma propriedade só, no pai, pinta radio e checkbox nativos. */
+  accent-color: var(--cor-primaria);
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* TODO 1 — label em cima, campo embaixo, com um respiro entre os dois. */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* TODO 2 — mesma aparência para input, select e textarea.
+   O `font: inherit` é o detalhe que mais muda o resultado: sem ele, o
+   select e o textarea aparecem com a fonte padrão do navegador. */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background-color: var(--cor-superficie);
+  color: inherit;
+  font: inherit;
+}
+
+/* TODO 3 — as três opções de turno na mesma linha. O flex-wrap garante
+   que elas quebrem em telas estreitas em vez de estourar a caixa. */
+.opcoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.opcao {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+}
+
+/* TODO 4 — foco visível. :focus-visible em vez de :focus, para o
+   contorno não aparecer no clique de mouse. O outline não ocupa espaço
+   no layout, então nada "pula" quando ele aparece. */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+/* TODO 5 — erro só depois da interação. Com :invalid, todo campo
+   obrigatório nasceria vermelho; :user-invalid espera a pessoa mexer no
+   campo (ou tentar enviar o formulário). */
+input:user-invalid,
+select:user-invalid,
+textarea:user-invalid {
+  border-color: var(--cor-erro);
+}
+
+/* ---------------- já vinha pronto ---------------- */
+
+.campo-turno {
+  margin: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 0.75rem 1rem 1rem;
+}
+
+.campo-turno legend {
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 0.35rem;
+}
+
+.campo-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.campo-inline label {
+  font-weight: 400;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  align-self: flex-start;
+  padding: 0.7rem 1.3rem;
+  border: none;
+  border-radius: var(--raio);
+  background-color: var(--cor-primaria);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}

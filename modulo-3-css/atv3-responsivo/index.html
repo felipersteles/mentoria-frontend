@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+
+  <!--
+    TODO 1 do style.css fala desta linha. Não apague: só leia e entenda.
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Módulo 3 · Atividade 3 — Responsivo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!--
+    É a MESMA página da atividade 2, com uma imagem de banner a mais.
+    O style.css já vem com o flexbox da atividade 2 resolvido: aqui o
+    trabalho é fazer essa página funcionar no celular.
+  -->
+
+  <header class="cabecalho">
+    <a class="logo" href="index.html">Mentoria<strong>CEUMA</strong></a>
+
+    <nav aria-label="Navegação principal">
+      <ul class="menu">
+        <li><a href="#cursos">Cursos</a></li>
+        <li><a href="#mentores">Mentores</a></li>
+        <li><a href="#precos">Preços</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="cursos">
+      <img
+        class="banner"
+        src="imagens/banner.svg"
+        alt="Banner da Mentoria Front-end da Universidade CEUMA"
+        width="1200"
+        height="400"
+      />
+
+      <h1>Nossos cursos</h1>
+      <p>Seis trilhas para você começar no desenvolvimento web.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h2>HTML</h2>
+          <p>Estrutura e significado: as tags certas nos lugares certos.</p>
+        </article>
+
+        <article class="card">
+          <h2>CSS</h2>
+          <p>Layout, cores e espaçamento sem brigar com o navegador.</p>
+        </article>
+
+        <article class="card">
+          <h2>JavaScript</h2>
+          <p>Lógica no navegador e manipulação do DOM na prática.</p>
+        </article>
+
+        <article class="card">
+          <h2>Git</h2>
+          <p>Versionamento, branches e pull requests do jeito que o mercado usa.</p>
+        </article>
+
+        <article class="card">
+          <h2>Acessibilidade</h2>
+          <p>Páginas que funcionam no teclado e no leitor de tela.</p>
+        </article>
+
+        <article class="card">
+          <h2>Projeto final</h2>
+          <p>Um site completo, feito por você, para mostrar no portfólio.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Módulo 3 · Atividade 3 — Mentoria Front-end CEUMA</p>
+  </footer>
+</body>
+</html>

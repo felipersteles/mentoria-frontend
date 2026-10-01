@@ -1,0 +1,134 @@
+/*
+  Módulo 3 · Atividade 2 — Flexbox (SOLUÇÃO)
+
+  Cada TODO está marcado com o número correspondente.
+*/
+
+:root {
+  --cor-fundo: #f7f7fb;
+  --cor-texto: #1f2430;
+  --cor-primaria: #4338ca;
+  --cor-borda: #d7d9e3;
+  --cor-superficie: #ffffff;
+  --raio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* TODO 4 — body em coluna ocupando no mínimo a tela inteira. Com o
+   `flex: 1` no main (mais abaixo), o rodapé para no fim da tela mesmo
+   quando há pouco conteúdo. */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* TODO 1 — logo em uma ponta, menu na outra.
+   justify-content trabalha no sentido da linha (horizontal, aqui) e
+   align-items no sentido cruzado (vertical). O flex-wrap evita que o
+   menu seja esmagado em telas estreitas. */
+.cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.logo strong {
+  color: var(--cor-primaria);
+}
+
+/* TODO 2 — links na mesma linha, espaçados com gap (não com margin). */
+.menu {
+  display: flex;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--cor-primaria);
+  text-decoration: underline;
+}
+
+/* TODO 4 (segunda metade) — o main ocupa todo o espaço que sobra. */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 0.25rem;
+}
+
+/* TODO 3 — grade de cards que quebra linha sozinha. */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+/* TODO 3 (segunda metade) — "quero 260px, mas me adapto":
+   flex-grow: 1 (posso crescer), flex-shrink: 1 (posso encolher),
+   flex-basis: 260px (minha largura ideal). É isso que reorganiza os
+   cards conforme a janela, sem nenhuma media query. */
+.card {
+  flex: 1 1 260px;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.rodape {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid var(--cor-borda);
+  background-color: var(--cor-superficie);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}

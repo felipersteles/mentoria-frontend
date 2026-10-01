@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="Banner da mentoria">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4338ca" />
+      <stop offset="1" stop-color="#8183f4" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="400" fill="url(#g)" />
+  <circle cx="980" cy="110" r="160" fill="#ffffff" opacity="0.12" />
+  <circle cx="190" cy="330" r="110" fill="#ffffff" opacity="0.1" />
+  <text x="60" y="190" font-family="system-ui, sans-serif" font-size="64" font-weight="700" fill="#ffffff">Mentoria Front-end</text>
+  <text x="60" y="250" font-family="system-ui, sans-serif" font-size="32" fill="#ffffff" opacity="0.85">Universidade CEUMA</text>
+</svg>

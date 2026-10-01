@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu site — Contato</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!--
+    Segunda página do projeto (SOLUÇÃO).
+
+    Repare em cada <label for="x"> apontando para o <input id="x">
+    correspondente: é isso que faz clicar no texto do label colocar o
+    cursor no campo, e é isso que o leitor de tela anuncia.
+  -->
+
+  <header>
+    <h1>Contato</h1>
+
+    <nav aria-label="Navegação principal">
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="fale-comigo">
+      <h2>Fale comigo</h2>
+      <p>Preencha o formulário abaixo e eu respondo no e-mail informado.</p>
+
+      <form>
+        <div class="campo">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" />
+        </div>
+
+        <div class="campo">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" />
+        </div>
+
+        <div class="campo">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+        </div>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <section id="outros-canais">
+      <h2>Outros canais</h2>
+
+      <dl>
+        <dt>E-mail</dt>
+        <dd>maria.silva@email.com</dd>
+
+        <dt>Cidade</dt>
+        <dd>São Luís — MA</dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer>
+    <p>Maria Silva — 2026</p>
+  </footer>
+
+</body>
+</html>

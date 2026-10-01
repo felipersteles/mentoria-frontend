@@ -1,0 +1,190 @@
+/*
+  Módulo 3 · Atividade 3 — Responsivo (SOLUÇÃO)
+
+  Mobile first: o CSS que está fora de qualquer @media é o do celular; o
+  layout de tela grande entra depois, na @media (min-width: 768px).
+
+  O TODO 1 não tinha CSS para escrever — era conferir a
+  <meta name="viewport"> no index.html. Sem ela, o celular finge ter uma
+  tela de ~980px e nenhuma media query funciona como esperado.
+*/
+
+:root {
+  --cor-fundo: #f7f7fb;
+  --cor-texto: #1f2430;
+  --cor-primaria: #4338ca;
+  --cor-borda: #d7d9e3;
+  --cor-superficie: #ffffff;
+  --raio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* TODO 2 — padrão = celular: tudo empilhado. */
+.cabecalho {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.logo strong {
+  color: var(--cor-primaria);
+}
+
+/* TODO 2 — menu em coluna, com um gap menor que o do desktop. */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu a {
+  color: var(--cor-texto);
+  text-decoration: none;
+}
+
+.menu a:hover {
+  color: var(--cor-primaria);
+  text-decoration: underline;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem;
+}
+
+/* TODO 4 — clamp(mínimo, ideal, máximo): o título acompanha a largura da
+   tela sem nunca ficar ilegível (o mínimo) nem gigante (o máximo), e sem
+   precisar de media query só para tamanho de fonte. */
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  margin: 1rem 0 0.25rem;
+}
+
+/* TODO 2 — cards em coluna no celular. */
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  flex: 1 1 260px;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 1.25rem;
+}
+
+.card h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* TODO 5 — imagem fluida. O banner tem 1200px no arquivo; sem o
+   max-width ele empurra a página e cria rolagem horizontal no celular.
+   O height: auto é o que mantém a proporção — só o max-width achata. */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.banner {
+  border-radius: var(--raio);
+}
+
+.rodape {
+  padding: 1.25rem;
+  border-top: 1px solid var(--cor-borda);
+  background-color: var(--cor-superficie);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+a:focus-visible {
+  outline: 3px solid var(--cor-primaria);
+  outline-offset: 2px;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* TODO 3 — a partir daqui é a exceção: telas de 768px para cima.
+   Leia como "a partir de 768px de largura, vale TAMBÉM isto".        */
+/* ------------------------------------------------------------------ */
+
+@media (min-width: 768px) {
+  .cabecalho {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .menu {
+    flex-direction: row;
+    gap: 1.25rem;
+  }
+
+  main {
+    padding: 2rem 1.5rem;
+  }
+
+  .cards {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+
+/* ------------------------------------------------------------------ */
+/* DESAFIO OPCIONAL — a mesma grade com Grid, sem @media nenhuma.
+   Para usar, troque as regras .cards acima por estas três linhas:
+
+     .cards {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+       gap: 1.25rem;
+     }
+
+   "auto-fit + minmax(240px, 1fr)" = crie quantas colunas couberem, cada
+   uma com no mínimo 240px, dividindo o espaço restante igualmente. Com
+   grid, o `flex: 1 1 260px` do .card não faz mais efeito e pode sair.   */
+/* ------------------------------------------------------------------ */
